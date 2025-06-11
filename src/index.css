@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
+    color: #334155;
+  }
+  
+  .font-serif {
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+@layer components {
+  /* Neural-inspired shadows and effects */
+  .card-shadow {
+    box-shadow: 
+      0 1px 3px rgba(59, 130, 246, 0.08),
+      0 4px 6px rgba(0, 0, 0, 0.04);
+  }
+  
+  .card-shadow-hover {
+    box-shadow: 
+      0 4px 6px rgba(59, 130, 246, 0.1),
+      0 10px 15px rgba(59, 130, 246, 0.08),
+      0 20px 25px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-neural {
+    box-shadow: 
+      0 4px 6px rgba(59, 130, 246, 0.07),
+      0 10px 15px rgba(139, 92, 246, 0.05),
+      0 20px 25px rgba(0, 0, 0, 0.03);
+  }
+
+  .shadow-neural-glow {
+    box-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.15),
+      0 8px 32px rgba(139, 92, 246, 0.1),
+      0 16px 64px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Neural color palette */
+  .bg-neural-white {
+    background-color: #fefefe;
+  }
+  
+  .bg-neural-gray-50 {
+    background-color: #f8fafc;
+  }
+  
+  .bg-neural-gray-100 {
+    background-color: #f1f5f9;
+  }
+  
+  .text-neural-gray-600 {
+    color: #64748b;
+  }
+  
+  .text-neural-gray-700 {
+    color: #475569;
+  }
+  
+  .text-neural-gray-800 {
+    color: #334155;
+  }
+
+  /* Neural blue spectrum */
+  .bg-neural-blue-50 {
+    background-color: #eff6ff;
+  }
+  
+  .bg-neural-blue-100 {
+    background-color: #dbeafe;
+  }
+  
+  .bg-neural-blue-500 {
+    background-color: #3b82f6;
+  }
+  
+  .bg-neural-blue-600 {
+    background-color: #2563eb;
+  }
+  
+  .text-neural-blue-500 {
+    color: #3b82f6;
+  }
+  
+  .text-neural-blue-600 {
+    color: #2563eb;
+  }
+  
+  .text-neural-blue-700 {
+    color: #1d4ed8;
+  }
+  
+  .border-neural-blue-200 {
+    border-color: #bfdbfe;
+  }
+
+  .border-neural-blue-300 {
+    border-color: #93c5fd;
+  }
+
+  /* Neural purple spectrum */
+  .bg-neural-purple-100 {
+    background-color: #f3e8ff;
+  }
+  
+  .bg-neural-purple-500 {
+    background-color: #8b5cf6;
+  }
+  
+  .bg-neural-purple-600 {
+    background-color: #7c3aed;
+  }
+  
+  .text-neural-purple-500 {
+    color: #8b5cf6;
+  }
+
+  /* Neural pink spectrum */
+  .text-neural-pink-500 {
+    color: #ec4899;
+  }
+
+  /* Enhanced note links with neural styling */
+  .note-link {
+    @apply inline-block px-3 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .note-link-exists {
+    @apply bg-neural-blue-100 text-neural-blue-700 border border-neural-blue-200;
+  }
+  
+  .note-link-exists:hover {
+    background-color: #bfdbfe;
+    @apply scale-105 shadow-sm;
+  }
+  
+  .note-link-missing {
+    @apply bg-amber-50 text-amber-700 hover:bg-amber-100 border border-dashed border-amber-300;
+  }
+  
+  /* Sophisticated masonry layout */
+  .masonry-grid {
+    column-count: 1;
+    column-gap: 2rem;
+    
+    @media (min-width: 640px) {
+      column-count: 2;
+    }
+    
+    @media (min-width: 1024px) {
+      column-count: 3;
+    }
+    
+    @media (min-width: 1280px) {
+      column-count: 4;
+    }
+  }
+  
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  /* Neural search bar with sophisticated effects */
+  .search-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .search-neural-glow {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .search-focused .search-neural-glow {
+    opacity: 1;
+  }
+
+  /* Floating elements with neural aesthetics */
+  .floating-shadow {
+    box-shadow: 
+      0 10px 25px rgba(59, 130, 246, 0.08),
+      0 20px 48px rgba(139, 92, 246, 0.04);
+  }
+
+  .floating-shadow-hover {
+    box-shadow: 
+      0 20px 40px rgba(59, 130, 246, 0.12),
+      0 32px 64px rgba(139, 92, 246, 0.06);
+  }
+
+  /* Typography with neural precision */
+  .heading-serif {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    color: #475569;
+  }
+
+  /* Neural-inspired tags */
+  .tag-neural {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 bg-neural-gray-100 text-neural-gray-700 text-sm rounded-full border;
+    border-color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tag-neural:hover {
+    @apply bg-neural-blue-50 text-neural-blue-700 scale-105;
+    border-color: #bfdbfe;
+  }
+
+  /* Sophisticated animations */
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Line clamping with neural precision */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  /* Neural border colors */
+  .border-neural-gray-200 {
+    border-color: #e2e8f0;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  @keyframes slideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced backdrop blur */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(16px);
+  }
+
+  /* Neural hover effects */
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Responsive spacing with neural precision */
+  .container-padding {
+    @apply px-6 sm:px-8 lg:px-12;
+  }
+}
+
+/* React Flow neural customizations */
+.react-flow__node {
+  font-family: 'Inter', sans-serif;
+}
+
+.react-flow__controls {
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15) !important;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  border: none !important;
+  color: #e2e8f0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(59, 130, 246, 0.2) !important;
+  color: #3b82f6 !important;
+  transform: scale(1.1) !important;
+}
+
+.react-flow__minimap {
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15) !important;
+}
+
+.react-flow__background {
+  background-color: #0f172a !important;
+}
+
+/* Neural grid pattern */
+.react-flow__background-pattern {
+  opacity: 0.4 !important;
+}
