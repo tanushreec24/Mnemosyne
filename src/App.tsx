@@ -47,8 +47,8 @@ function App() {
     keys: ['title', 'content', 'tags']
   });
 
-  // Daily notes functionality
-  const { todayNote, todayDate, recentDailyNotes, formatDateForDisplay } = useDailyNotes({
+  // Daily notes functionality - NO AUTO-CREATION
+  const { todayNote, todayDate, recentDailyNotes, formatDateForDisplay, createTodayNote } = useDailyNotes({
     notes,
     addNote,
     getNoteByTitle
@@ -121,8 +121,10 @@ function App() {
   };
 
   const handleTodayNoteClick = () => {
-    if (todayNote) {
-      setViewingNote(todayNote);
+    // Create today's note if it doesn't exist, then view it
+    const noteToView = todayNote || createTodayNote();
+    if (noteToView) {
+      setViewingNote(noteToView);
       setEditingNote(null);
       setShowGraph(false);
       setIsCreatingNote(false);
