@@ -94,8 +94,8 @@ export function NoteEditor({ note, notes, onSave, onCancel, onLinkClick, onCreat
       className={`
         flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 font-medium text-sm
         ${viewMode === mode 
-          ? 'bg-sage-600 text-white shadow-lg transform scale-105' 
-          : 'bg-warm-gray-100 text-warm-gray-700 hover:bg-warm-gray-200 hover:text-warm-gray-800'
+          ? 'bg-teal-600 text-white shadow-lg transform scale-105' 
+          : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-800'
         }
       `}
     >
@@ -105,15 +105,15 @@ export function NoteEditor({ note, notes, onSave, onCancel, onLinkClick, onCreat
   );
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
-      <div className="bg-warm-white rounded-3xl floating-shadow w-full max-w-7xl max-h-[95vh] flex flex-col overflow-hidden animate-slideUp">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 z-50 animate-fadeIn overflow-y-auto">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-7xl my-8 flex flex-col max-h-[calc(100vh-4rem)] animate-slideUp">
         {/* Header */}
-        <div className="flex items-center justify-between p-8 border-b border-warm-gray-200/50 bg-warm-white/80 backdrop-blur-sm">
+        <div className="flex items-center justify-between p-8 border-b border-gray-200 bg-white/90 backdrop-blur-sm rounded-t-3xl flex-shrink-0">
           <div className="flex-1">
-            <h2 className="heading-serif text-3xl text-warm-gray-800 mb-2">
+            <h2 className="heading-serif text-3xl text-gray-800 mb-2">
               {note ? 'Edit Note' : 'New Note'}
             </h2>
-            <p className="body-text text-warm-gray-600">
+            <p className="body-text text-gray-600">
               {note ? 'Refine your thoughts' : 'Plant a new idea in your garden'}
             </p>
           </div>
@@ -129,51 +129,51 @@ export function NoteEditor({ note, notes, onSave, onCancel, onLinkClick, onCreat
             <button
               onClick={handleSave}
               disabled={!title.trim()}
-              className="flex items-center gap-3 px-6 py-3 bg-sage-600 text-white rounded-2xl hover:bg-sage-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed card-shadow hover:card-shadow-hover hover-lift font-medium"
+              className="flex items-center gap-3 px-6 py-3 bg-teal-600 text-white rounded-2xl hover:bg-teal-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover-lift font-medium"
             >
               <Save size={18} />
               Save Note
             </button>
             <button
               onClick={onCancel}
-              className="p-3 text-warm-gray-500 hover:text-warm-gray-700 hover:bg-warm-gray-100 rounded-2xl transition-all duration-200"
+              className="p-3 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-2xl transition-all duration-200"
             >
               <X size={22} />
             </button>
           </div>
         </div>
 
-        {/* Content Area */}
-        <div className="flex-1 overflow-hidden">
-          <div className="p-8 space-y-6 h-full overflow-y-auto">
+        {/* Content Area - Scrollable */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-8 space-y-6">
             {/* Title Input */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-warm-gray-700">Title</label>
+              <label className="block text-sm font-medium text-gray-700">Title</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Give your thought a name..."
-                className="w-full text-2xl heading-serif font-medium text-warm-gray-800 bg-warm-gray-50/50 border-2 border-warm-gray-200/60 rounded-2xl px-6 py-4 outline-none focus:border-sage-300 focus:ring-4 focus:ring-sage-100/50 transition-all duration-300 placeholder-warm-gray-400"
+                className="w-full text-2xl heading-serif font-medium text-gray-800 bg-gray-50/50 border-2 border-gray-200 rounded-2xl px-6 py-4 outline-none focus:border-teal-300 focus:ring-4 focus:ring-teal-100/50 transition-all duration-300 placeholder-gray-400"
                 autoFocus
               />
             </div>
 
             {/* Tags Section */}
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-warm-gray-700">Tags</label>
+              <label className="block text-sm font-medium text-gray-700">Tags</label>
               <div className="flex flex-wrap gap-3 mb-4">
                 {tags.map(tag => (
                   <span 
                     key={tag}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-sage-100 text-sage-700 text-sm rounded-full border border-sage-200/60 animate-fadeIn"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 text-teal-700 text-sm rounded-full border border-teal-200 animate-fadeIn"
                   >
                     <TagIcon size={12} />
                     {tag}
                     <button
                       onClick={() => removeTag(tag)}
-                      className="text-sage-500 hover:text-sage-700 ml-1 transition-colors"
+                      className="text-teal-500 hover:text-teal-700 ml-1 transition-colors"
                     >
                       <X size={12} />
                     </button>
@@ -191,11 +191,11 @@ export function NoteEditor({ note, notes, onSave, onCancel, onLinkClick, onCreat
                       }
                     }}
                     placeholder="Add a tag..."
-                    className="px-4 py-2 text-sm bg-warm-gray-50 border border-warm-gray-200 rounded-full outline-none focus:border-sage-300 focus:ring-2 focus:ring-sage-100 transition-all duration-200"
+                    className="px-4 py-2 text-sm bg-gray-50 border border-gray-200 rounded-full outline-none focus:border-teal-300 focus:ring-2 focus:ring-teal-100 transition-all duration-200"
                   />
                   <button
                     onClick={addTag}
-                    className="px-4 py-2 text-sm text-sage-600 hover:text-sage-700 font-medium transition-colors"
+                    className="px-4 py-2 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors"
                   >
                     Add
                   </button>
@@ -205,10 +205,10 @@ export function NoteEditor({ note, notes, onSave, onCancel, onLinkClick, onCreat
 
             {/* Content Area with View Modes */}
             <div className="space-y-3 flex-1">
-              <label className="block text-sm font-medium text-warm-gray-700">Content</label>
+              <label className="block text-sm font-medium text-gray-700">Content</label>
               
               {/* Helper Text */}
-              <div className="text-sm text-warm-gray-600 bg-sage-50/50 px-4 py-3 rounded-xl border border-sage-200/40">
+              <div className="text-sm text-gray-600 bg-teal-50/50 px-4 py-3 rounded-xl border border-teal-200/40">
                 <strong>💡 Tip:</strong> Use [[Note Title]] to link to other notes. 
                 Links will be created automatically when you reference them.
               </div>
@@ -233,8 +233,11 @@ export function NoteEditor({ note, notes, onSave, onCancel, onLinkClick, onCreat
 Let your ideas bloom here. Connect them with [[other notes]] to grow your digital garden.
 
 What's on your mind today?"
-                      className="w-full h-96 text-warm-gray-700 bg-warm-gray-50/30 border-2 border-warm-gray-200/60 rounded-2xl p-6 outline-none focus:border-sage-300 focus:ring-4 focus:ring-sage-100/50 resize-none leading-relaxed transition-all duration-300 placeholder-warm-gray-400 body-text"
-                      style={{ minHeight: viewMode === 'split' ? '400px' : '500px' }}
+                      className="w-full text-gray-700 bg-gray-50/30 border-2 border-gray-200 rounded-2xl p-6 outline-none focus:border-teal-300 focus:ring-4 focus:ring-teal-100/50 resize-none leading-relaxed transition-all duration-300 placeholder-gray-400 body-text"
+                      style={{ 
+                        minHeight: viewMode === 'split' ? '400px' : '500px',
+                        height: viewMode === 'split' ? '400px' : '500px'
+                      }}
                     />
                   </div>
                 )}
@@ -245,15 +248,21 @@ What's on your mind today?"
                     transition-all duration-500 ease-in-out
                     ${viewMode === 'split' ? 'opacity-100' : viewMode === 'preview' ? 'opacity-100' : 'opacity-0 pointer-events-none'}
                   `}>
-                    <div className="h-96 bg-warm-white border-2 border-warm-gray-200/60 rounded-2xl p-6 overflow-y-auto" style={{ minHeight: viewMode === 'split' ? '400px' : '500px' }}>
+                    <div 
+                      className="bg-white border-2 border-gray-200 rounded-2xl p-6 overflow-y-auto" 
+                      style={{ 
+                        minHeight: viewMode === 'split' ? '400px' : '500px',
+                        height: viewMode === 'split' ? '400px' : '500px'
+                      }}
+                    >
                       {content ? (
                         <div 
-                          className="body-text text-warm-gray-700 leading-relaxed whitespace-pre-wrap"
+                          className="body-text text-gray-700 leading-relaxed whitespace-pre-wrap"
                           onClick={handleContentClick}
                           dangerouslySetInnerHTML={{ __html: parseLinks(content) }}
                         />
                       ) : (
-                        <div className="flex items-center justify-center h-full text-warm-gray-400">
+                        <div className="flex items-center justify-center h-full text-gray-400">
                           <div className="text-center">
                             <Eye size={48} className="mx-auto mb-4 opacity-50" />
                             <p className="text-lg">Preview will appear here</p>
