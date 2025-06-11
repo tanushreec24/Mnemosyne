@@ -140,14 +140,14 @@ export function SearchBar({
           : 'hover:scale-[1.01]'
         }
       `}>
-        {/* Neural glow effect */}
-        <div className="search-neural-glow absolute inset-0 rounded-full -z-10" />
+        {/* Teal glow effect */}
+        <div className="search-teal-glow absolute inset-0 rounded-full -z-10" />
         
         <Search 
           size={22} 
           className={`
             absolute left-6 transition-all duration-300 z-10
-            ${isFocused ? 'text-neural-blue-600 scale-110' : 'text-neural-gray-500'}
+            ${isFocused ? 'text-teal-600 scale-110' : 'text-gray-500'}
           `} 
         />
         
@@ -161,16 +161,16 @@ export function SearchBar({
           placeholder={`${placeholder} • Use # for tags...`}
           className={`
             w-full pl-16 pr-16 py-6 
-            bg-neural-white/90 backdrop-blur-xl
+            bg-white/90 backdrop-blur-xl
             border-2 rounded-full
             outline-none 
             transition-all duration-500 ease-out
-            placeholder-neural-gray-500
-            body-text text-neural-gray-800 text-lg
-            card-shadow
+            placeholder-gray-500
+            body-text text-gray-800 text-lg
+            shadow-lg
             ${isFocused 
-              ? 'border-neural-blue-300 bg-neural-white ring-4 ring-neural-blue-100/50 card-shadow-hover shadow-neural-glow' 
-              : 'border-neural-gray-200/60 hover:border-neural-gray-300/80 hover:bg-neural-white hover:card-shadow-hover'
+              ? 'border-teal-300 bg-white ring-4 ring-teal-100/50 shadow-xl shadow-teal-200/20' 
+              : 'border-gray-200 hover:border-gray-300 hover:bg-white hover:shadow-xl'
             }
           `}
         />
@@ -182,8 +182,8 @@ export function SearchBar({
               absolute right-6 p-2 rounded-full z-10
               transition-all duration-300
               ${isFocused 
-                ? 'text-neural-blue-600 hover:text-neural-blue-700 hover:bg-neural-blue-50' 
-                : 'text-neural-gray-500 hover:text-neural-gray-700 hover:bg-neural-gray-100'
+                ? 'text-teal-600 hover:text-teal-700 hover:bg-teal-50' 
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
               }
             `}
           >
@@ -198,13 +198,13 @@ export function SearchBar({
           {selectedTags.map(tag => (
             <span
               key={tag}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-neural-blue-100 to-neural-purple-100 text-neural-blue-700 text-sm rounded-full border border-neural-blue-200/60 animate-fadeIn shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-100 to-teal-200 text-teal-700 text-sm rounded-full border border-teal-300 animate-fadeIn shadow-sm"
             >
               <Tag size={12} />
               {tag}
               <button
                 onClick={() => onTagRemove(tag)}
-                className="text-neural-blue-500 hover:text-neural-blue-700 transition-colors ml-1"
+                className="text-teal-500 hover:text-teal-700 transition-colors ml-1"
               >
                 <X size={12} />
               </button>
@@ -216,14 +216,14 @@ export function SearchBar({
       {/* Search Results Summary */}
       {(value.trim() || selectedTags.length > 0) && (
         <div className="text-center mt-6 animate-slideUp">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-neural-gray-50/80 backdrop-blur-sm rounded-full text-sm text-neural-gray-600 border border-neural-gray-200/50">
-            <Brain size={16} className="text-neural-blue-500" />
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-50/80 backdrop-blur-sm rounded-full text-sm text-gray-600 border border-gray-200/50">
+            <Brain size={16} className="text-teal-500" />
             {resultCount === 0 
               ? 'No thoughts found' 
               : `${resultCount} thought${resultCount === 1 ? '' : 's'} discovered`
             }
             {selectedTags.length > 0 && (
-              <span className="text-neural-blue-600 flex items-center gap-1">
+              <span className="text-teal-600 flex items-center gap-1">
                 <Sparkles size={12} />
                 {selectedTags.length} tag{selectedTags.length === 1 ? '' : 's'} active
               </span>
@@ -236,23 +236,23 @@ export function SearchBar({
       {(showSuggestions || showHistory) && (
         <div 
           ref={suggestionsRef}
-          className="absolute top-full left-0 right-0 mt-4 bg-neural-white/95 backdrop-blur-xl rounded-3xl floating-shadow border border-neural-gray-200/50 overflow-hidden z-50 animate-slideUp"
+          className="absolute top-full left-0 right-0 mt-4 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200/50 overflow-hidden z-50 animate-slideUp"
         >
           {/* Tag Suggestions */}
           {showSuggestions && tagSuggestions.length > 0 && (
-            <div className="p-6 border-b border-neural-gray-100">
-              <div className="flex items-center gap-3 mb-4 text-sm font-medium text-neural-gray-700">
-                <Tag size={16} className="text-neural-blue-500" />
-                Neural Tags
+            <div className="p-6 border-b border-gray-100">
+              <div className="flex items-center gap-3 mb-4 text-sm font-medium text-gray-700">
+                <Tag size={16} className="text-teal-500" />
+                Tags
               </div>
               <div className="space-y-2">
                 {tagSuggestions.map(tag => (
                   <button
                     key={tag}
                     onClick={() => handleTagSuggestionClick(tag)}
-                    className="w-full text-left px-4 py-3 text-sm text-neural-gray-700 hover:bg-neural-blue-50 rounded-xl transition-all duration-200 flex items-center gap-3 group"
+                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-teal-50 rounded-xl transition-all duration-200 flex items-center gap-3 group"
                   >
-                    <Tag size={14} className="text-neural-blue-600 group-hover:scale-110 transition-transform" />
+                    <Tag size={14} className="text-teal-600 group-hover:scale-110 transition-transform" />
                     #{tag}
                   </button>
                 ))}
@@ -263,18 +263,18 @@ export function SearchBar({
           {/* Search History */}
           {showHistory && searchHistory.length > 0 && (
             <div className="p-6">
-              <div className="flex items-center gap-3 mb-4 text-sm font-medium text-neural-gray-700">
-                <Clock size={16} className="text-neural-purple-500" />
-                Recent Explorations
+              <div className="flex items-center gap-3 mb-4 text-sm font-medium text-gray-700">
+                <Clock size={16} className="text-teal-500" />
+                Recent Searches
               </div>
               <div className="space-y-2">
                 {searchHistory.slice(0, 5).map((query, index) => (
                   <button
                     key={index}
                     onClick={() => handleHistorySelect(query)}
-                    className="w-full text-left px-4 py-3 text-sm text-neural-gray-700 hover:bg-neural-gray-50 rounded-xl transition-all duration-200 flex items-center gap-3 group"
+                    className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-xl transition-all duration-200 flex items-center gap-3 group"
                   >
-                    <Search size={14} className="text-neural-gray-400 group-hover:text-neural-blue-500 transition-colors" />
+                    <Search size={14} className="text-gray-400 group-hover:text-teal-500 transition-colors" />
                     {query}
                   </button>
                 ))}
@@ -288,8 +288,8 @@ export function SearchBar({
       {allTags.length > 0 && !isFocused && (
         <div className="mt-6 animate-slideUp">
           <div className="flex items-center gap-3 mb-4">
-            <Filter size={18} className="text-neural-gray-500" />
-            <span className="text-sm font-medium text-neural-gray-700">Neural Pathways</span>
+            <Filter size={18} className="text-gray-500" />
+            <span className="text-sm font-medium text-gray-700">Popular Tags</span>
           </div>
           <div className="flex flex-wrap gap-3">
             {allTags.slice(0, 8).map(tag => (
@@ -300,8 +300,8 @@ export function SearchBar({
                 className={`
                   inline-flex items-center gap-2 px-4 py-2 text-sm rounded-full transition-all duration-300 font-medium
                   ${selectedTags.includes(tag)
-                    ? 'bg-neural-blue-100 text-neural-blue-700 border border-neural-blue-200 cursor-not-allowed opacity-50'
-                    : 'bg-neural-gray-100 text-neural-gray-700 border border-neural-gray-200 hover:bg-neural-blue-50 hover:text-neural-blue-700 hover:border-neural-blue-200 hover:scale-105'
+                    ? 'bg-teal-100 text-teal-700 border border-teal-200 cursor-not-allowed opacity-50'
+                    : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-teal-50 hover:text-teal-700 hover:border-teal-200 hover:scale-105'
                   }
                 `}
               >
