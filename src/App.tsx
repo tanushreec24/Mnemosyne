@@ -207,20 +207,20 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-neural-white via-neural-gray-50 to-neural-blue-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-teal-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-neural-blue-100 rounded-full mb-8 animate-pulse-glow">
-            <Brain size={32} className="text-neural-blue-600" />
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-teal-100 rounded-full mb-8 animate-pulse-glow">
+            <Brain size={32} className="text-teal-600" />
           </div>
-          <h2 className="heading-serif text-3xl text-neural-gray-800 mb-3">Initializing Mnemosyne</h2>
-          <p className="body-text text-neural-gray-600">Preparing your knowledge visualization platform...</p>
+          <h2 className="heading-serif text-3xl text-gray-800 mb-3">Initializing Mnemosyne</h2>
+          <p className="body-text text-gray-600">Preparing your knowledge visualization platform...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neural-white via-neural-gray-50 to-neural-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-teal-50">
       <Header onNewNote={handleNewNote} onShowGraph={handleShowGraph} />
       
       <main className="max-w-7xl mx-auto container-padding py-16">
@@ -274,14 +274,14 @@ function App() {
           {hasActiveFilters && (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <Sparkles size={24} className="text-neural-blue-600" />
-                <h2 className="heading-serif text-2xl text-neural-gray-800">
+                <Sparkles size={24} className="text-teal-600" />
+                <h2 className="heading-serif text-2xl text-gray-800">
                   Knowledge Connections
                 </h2>
               </div>
               <button
                 onClick={clearAll}
-                className="text-sm text-neural-gray-600 hover:text-neural-gray-800 transition-colors px-4 py-2 rounded-xl hover:bg-neural-gray-100"
+                className="text-sm text-gray-600 hover:text-gray-800 transition-colors px-4 py-2 rounded-xl hover:bg-gray-100"
               >
                 Clear all filters
               </button>
