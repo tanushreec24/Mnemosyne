@@ -9,6 +9,8 @@ interface UseDailyNotesProps {
 
 export function useDailyNotes({ notes, addNote, getNoteByTitle }: UseDailyNotesProps) {
   const hasCreatedTodayNote = useRef(false);
+  const isInitialLoad = useRef(true);
+  const lastCheckedDate = useRef<string>('');
   
   // Get today's date in ISO format (YYYY-MM-DD)
   const todayDate = useMemo(() => {
@@ -19,24 +21,23 @@ export function useDailyNotes({ notes, addNote, getNoteByTitle }: UseDailyNotesP
   // Find today's daily note
   const todayNote = useMemo(() => {
     return getNoteByTitle(todayDate);
-  }, [todayDate, getNoteByTitle, notes]); // Add notes dependency to trigger re-evaluation
+  }, [todayDate, getNoteByTitle, notes]);
 
-  // Auto-create today's note if it doesn't exist (only once)
-  useEffect(() => {
-    // Only create if:
-    // 1. No today note exists
-    // 2. We haven't already created one in this session
-    // 3. There are notes loaded (to avoid creating during initial load)
-    if (!todayNote && !hasCreatedTodayNote.current && notes.length >= 0) {
-      const today = new Date();
-      const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
-      const monthDay = today.toLocaleDateString('en-US', { 
-        month: 'long', 
-        day: 'numeric',
-        year: 'numeric'
-      });
-      
-      const initialContent = `${dayName}, ${monthDay}
+  // ONLY create daily note when explicitly requested, NOT on component mount/refresh
+  const createTodayNote = () => {
+    if (todayNote || hasCreatedTodayNote.current) {
+      return todayNote;
+    }
+
+    const today = new Date();
+    const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+    const monthDay = today.toLocaleDateString('en-US', { 
+      month: 'long', 
+      day: 'numeric',
+      year: 'numeric'
+    });
+    
+    const initialContent = `${dayName}, ${monthDay}
 
 Today's Focus:
 
@@ -49,14 +50,33 @@ Reflections:
 
 This is your daily note for ${todayDate}. Use it to capture thoughts, tasks, and reflections for the day.`;
 
-      addNote(todayDate, initialContent, ['daily', 'journal']);
-      hasCreatedTodayNote.current = true;
-    }
-  }, [todayNote, todayDate, addNote, notes.length]);
+    const newNote = addNote(todayDate, initialContent, ['daily', 'journal']);
+    hasCreatedTodayNote.current = true;
+    return newNote;
+  };
 
-  // Reset the creation flag when the date changes (for new day)
+  // Reset creation flag when date changes (check periodically)
   useEffect(() => {
-    hasCreatedTodayNote.current = false;
+    const checkDateChange = () => {
+      const currentDate = new Date().toISOString().split('T')[0];
+      
+      // If date has changed, reset the creation flag
+      if (lastCheckedDate.current && lastCheckedDate.current !== currentDate) {
+        hasCreatedTodayNote.current = false;
+      }
+      
+      lastCheckedDate.current = currentDate;
+    };
+
+    // Mark as no longer initial load after first render
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false;
+      lastCheckedDate.current = todayDate;
+    }
+
+    // Check for date changes every minute
+    const interval = setInterval(checkDateChange, 60000);
+    return () => clearInterval(interval);
   }, [todayDate]);
 
   // Get all daily notes (sorted by date, newest first)
@@ -106,6 +126,7 @@ This is your daily note for ${todayDate}. Use it to capture thoughts, tasks, and
     todayDate,
     dailyNotes,
     recentDailyNotes,
-    formatDateForDisplay
+    formatDateForDisplay,
+    createTodayNote // Expose function to manually create today's note
   };
 }
