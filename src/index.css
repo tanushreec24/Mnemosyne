@@ -20,130 +20,46 @@
 }
 
 @layer components {
-  /* Neural-inspired shadows and effects */
+  /* Teal-inspired shadows and effects */
   .card-shadow {
     box-shadow: 
-      0 1px 3px rgba(59, 130, 246, 0.08),
+      0 1px 3px rgba(20, 184, 166, 0.08),
       0 4px 6px rgba(0, 0, 0, 0.04);
   }
   
   .card-shadow-hover {
     box-shadow: 
-      0 4px 6px rgba(59, 130, 246, 0.1),
-      0 10px 15px rgba(59, 130, 246, 0.08),
+      0 4px 6px rgba(20, 184, 166, 0.1),
+      0 10px 15px rgba(20, 184, 166, 0.08),
       0 20px 25px rgba(0, 0, 0, 0.04);
   }
 
   .shadow-neural {
     box-shadow: 
-      0 4px 6px rgba(59, 130, 246, 0.07),
-      0 10px 15px rgba(139, 92, 246, 0.05),
+      0 4px 6px rgba(20, 184, 166, 0.07),
+      0 10px 15px rgba(45, 212, 191, 0.05),
       0 20px 25px rgba(0, 0, 0, 0.03);
   }
 
   .shadow-neural-glow {
     box-shadow: 
-      0 0 20px rgba(59, 130, 246, 0.15),
-      0 8px 32px rgba(139, 92, 246, 0.1),
+      0 0 20px rgba(20, 184, 166, 0.15),
+      0 8px 32px rgba(45, 212, 191, 0.1),
       0 16px 64px rgba(0, 0, 0, 0.05);
   }
 
-  /* Neural color palette */
-  .bg-neural-white {
-    background-color: #fefefe;
-  }
-  
-  .bg-neural-gray-50 {
-    background-color: #f8fafc;
-  }
-  
-  .bg-neural-gray-100 {
-    background-color: #f1f5f9;
-  }
-  
-  .text-neural-gray-600 {
-    color: #64748b;
-  }
-  
-  .text-neural-gray-700 {
-    color: #475569;
-  }
-  
-  .text-neural-gray-800 {
-    color: #334155;
-  }
-
-  /* Neural blue spectrum */
-  .bg-neural-blue-50 {
-    background-color: #eff6ff;
-  }
-  
-  .bg-neural-blue-100 {
-    background-color: #dbeafe;
-  }
-  
-  .bg-neural-blue-500 {
-    background-color: #3b82f6;
-  }
-  
-  .bg-neural-blue-600 {
-    background-color: #2563eb;
-  }
-  
-  .text-neural-blue-500 {
-    color: #3b82f6;
-  }
-  
-  .text-neural-blue-600 {
-    color: #2563eb;
-  }
-  
-  .text-neural-blue-700 {
-    color: #1d4ed8;
-  }
-  
-  .border-neural-blue-200 {
-    border-color: #bfdbfe;
-  }
-
-  .border-neural-blue-300 {
-    border-color: #93c5fd;
-  }
-
-  /* Neural purple spectrum */
-  .bg-neural-purple-100 {
-    background-color: #f3e8ff;
-  }
-  
-  .bg-neural-purple-500 {
-    background-color: #8b5cf6;
-  }
-  
-  .bg-neural-purple-600 {
-    background-color: #7c3aed;
-  }
-  
-  .text-neural-purple-500 {
-    color: #8b5cf6;
-  }
-
-  /* Neural pink spectrum */
-  .text-neural-pink-500 {
-    color: #ec4899;
-  }
-
-  /* Enhanced note links with neural styling */
+  /* Enhanced note links with teal styling */
   .note-link {
     @apply inline-block px-3 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer;
     font-family: 'Inter', sans-serif;
   }
   
   .note-link-exists {
-    @apply bg-neural-blue-100 text-neural-blue-700 border border-neural-blue-200;
+    @apply bg-teal-100 text-teal-700 border border-teal-200;
   }
   
   .note-link-exists:hover {
-    background-color: #bfdbfe;
+    background-color: #99f6e4;
     @apply scale-105 shadow-sm;
   }
   
@@ -174,38 +90,38 @@
     margin-bottom: 2rem;
   }
 
-  /* Neural search bar with sophisticated effects */
+  /* Teal search bar with sophisticated effects */
   .search-container {
     position: relative;
     max-width: 700px;
     margin: 0 auto;
   }
   
-  .search-neural-glow {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  .search-teal-glow {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(45, 212, 191, 0.1) 100%);
     filter: blur(30px);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
 
-  .search-focused .search-neural-glow {
+  .search-focused .search-teal-glow {
     opacity: 1;
   }
 
-  /* Floating elements with neural aesthetics */
+  /* Floating elements with teal aesthetics */
   .floating-shadow {
     box-shadow: 
-      0 10px 25px rgba(59, 130, 246, 0.08),
-      0 20px 48px rgba(139, 92, 246, 0.04);
+      0 10px 25px rgba(20, 184, 166, 0.08),
+      0 20px 48px rgba(45, 212, 191, 0.04);
   }
 
   .floating-shadow-hover {
     box-shadow: 
-      0 20px 40px rgba(59, 130, 246, 0.12),
-      0 32px 64px rgba(139, 92, 246, 0.06);
+      0 20px 40px rgba(20, 184, 166, 0.12),
+      0 32px 64px rgba(45, 212, 191, 0.06);
   }
 
-  /* Typography with neural precision */
+  /* Typography with precision */
   .heading-serif {
     font-family: 'DM Serif Display', serif;
     font-weight: 400;
@@ -219,9 +135,9 @@
     color: #475569;
   }
 
-  /* Neural-inspired tags */
+  /* Teal-inspired tags */
   .tag-neural {
-    @apply inline-flex items-center gap-1.5 px-3 py-1.5 bg-neural-gray-100 text-neural-gray-700 text-sm rounded-full border;
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-full border;
     border-color: #e2e8f0;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
@@ -229,8 +145,8 @@
   }
 
   .tag-neural:hover {
-    @apply bg-neural-blue-50 text-neural-blue-700 scale-105;
-    border-color: #bfdbfe;
+    @apply bg-teal-50 text-teal-700 scale-105;
+    border-color: #99f6e4;
   }
 
   /* Sophisticated animations */
@@ -262,7 +178,7 @@
     }
   }
 
-  /* Line clamping with neural precision */
+  /* Line clamping with precision */
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -286,7 +202,7 @@
 }
 
 @layer utilities {
-  /* Neural border colors */
+  /* Border colors */
   .border-neural-gray-200 {
     border-color: #e2e8f0;
   }
@@ -328,7 +244,7 @@
     backdrop-filter: blur(16px);
   }
 
-  /* Neural hover effects */
+  /* Hover effects */
   .hover-lift {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -337,13 +253,13 @@
     transform: translateY(-4px);
   }
 
-  /* Responsive spacing with neural precision */
+  /* Responsive spacing */
   .container-padding {
     @apply px-6 sm:px-8 lg:px-12;
   }
 }
 
-/* React Flow neural customizations */
+/* React Flow teal customizations */
 .react-flow__node {
   font-family: 'Inter', sans-serif;
 }
@@ -351,9 +267,9 @@
 .react-flow__controls {
   background: rgba(15, 23, 42, 0.8) !important;
   backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  border: 1px solid rgba(20, 184, 166, 0.3) !important;
   border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.15) !important;
 }
 
 .react-flow__controls-button {
@@ -364,24 +280,24 @@
 }
 
 .react-flow__controls-button:hover {
-  background: rgba(59, 130, 246, 0.2) !important;
-  color: #3b82f6 !important;
+  background: rgba(20, 184, 166, 0.2) !important;
+  color: #14b8a6 !important;
   transform: scale(1.1) !important;
 }
 
 .react-flow__minimap {
   background: rgba(15, 23, 42, 0.8) !important;
   backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  border: 1px solid rgba(20, 184, 166, 0.3) !important;
   border-radius: 16px !important;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.15) !important;
 }
 
 .react-flow__background {
   background-color: #0f172a !important;
 }
 
-/* Neural grid pattern */
+/* Grid pattern */
 .react-flow__background-pattern {
   opacity: 0.4 !important;
 }
